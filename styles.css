@@ -1,3 +1,4 @@
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -5,46 +6,54 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #1C1C1C;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-header,
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1rem 0;
+/* Header */
+header {
+    background-color: #FF4500;
+    color: #FFFFFF;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0.5rem 1rem;
+    width: 100%;
+    /* Assurez-vous que le header prend toute la largeur disponible */
 }
 
+/* Logos */
 header img {
-    height: 40px;
-    /* Taille du logo */
-    margin-left: 20px;
-    /* Espacement à gauche pour le logo */
+    height: 50px;
 }
 
+/* Titre */
 header h1 {
-    flex: 1;
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.8rem;
     text-align: center;
-    font-size: 1.5rem;
-    margin: 0;
+    color: #FFD700;
+    position: absolute;
+    /* Cela positionne le titre relativement au header */
+    left: 50%;
+    /* Positionne le début du titre au centre du header */
+    transform: translateX(-50%);
+    /* Décale le titre de la moitié de sa largeur pour le centrer */
 }
 
-header .right-logo {
-    height: 40px;
-    /* Taille du logo droit */
-    margin-right: 20px;
-    /* Espacement à droite */
+/* Footer */
+footer {
+    background-color: #FF4500;
+    text-align: center;
+    padding: 1rem 0;
 }
 
 footer a {
-    color: #00bfff;
+    color: #FFD700;
     text-decoration: none;
 }
 
@@ -52,6 +61,7 @@ footer a:hover {
     text-decoration: underline;
 }
 
+/* Accordéon Container */
 .container {
     flex: 1;
     display: flex;
@@ -68,30 +78,12 @@ footer a:hover {
     overflow: hidden;
     cursor: pointer;
     transition: flex 0.5s ease;
+    background-color: #2A2A2A;
+    /* Couleur de fond pour les colonnes */
 }
 
 .column:hover {
     flex: 5;
-}
-
-/* Dégradé sur les images */
-.column::before {
-    content: '';
-    position: absolute;
-    top: 25%;
-    /* Le dégradé commence plus bas */
-    left: 0;
-    width: 100%;
-    height: 75%;
-    /* Ajuste la hauteur du dégradé */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.column:hover::before {
-    opacity: 1;
 }
 
 .column img {
@@ -100,61 +92,72 @@ footer a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    /* Pleine hauteur de la colonne */
     object-fit: cover;
     z-index: 0;
+
 }
 
+/* Dégradé */
+.column::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    /* Ajuste le placement du dégradé */
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+    z-index: 1;
+    opacity: 1;
+}
+
+/* Textes et Boutons */
 .column-content {
     position: absolute;
     bottom: 10%;
-    /* Place le texte en bas */
-    left: 50%;
-    transform: translateX(-50%);
-    /* Centre horizontalement par rapport à la colonne */
+    left: 10%;
+    transform: translateX(0);
     text-align: left;
-    /* Texte aligné à gauche */
     color: white;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 2;
-    width: auto;
-    /* Supprime la contrainte de largeur */
+    opacity: 0;
+    /* Le texte est caché par défaut */
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .column:hover .column-content {
     opacity: 1;
-    transform: translate(-50%, 0);
-    /* Pas de mouvement vertical */
-    transition-delay: 0.5s;
+    /* Le texte devient visible lors du survol */
+    transform: translateX(0);
 }
 
-.column-content h3,
+.column-content h3 {
+    font-family: 'Press Start 2P', sans-serif;
+    font-size: 1.2rem;
+    color: #FFD700;
+    margin-bottom: 0.5rem;
+}
+
 .column-content p {
-    margin: 0;
+    font-size: 0.9rem;
+    color: #FFFFFF;
 }
 
-.column-content p {
-    margin-top: 0.5rem;
-    /* Espacement entre le titre et le texte */
-}
-
-/* Style du bouton qui ouvre un nouvel onglet */
 .open-link-button {
-    margin-top: 1rem;
-    /* Espacement entre le texte et le bouton */
     display: inline-block;
-    background-color: #333;
-    color: white;
-    padding: 8px 15px;
+    margin-top: 1rem;
+    background-color: #FFD700;
+    color: #1C1C1C;
+    padding: 10px 20px;
     border: none;
-    cursor: pointer;
-    font-size: 14px;
     border-radius: 5px;
+    font-size: 0.9rem;
     text-decoration: none;
-    transition: background-color 0.3s;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .open-link-button:hover {
-    background-color: #555;
+    background-color: #FF4500;
+    color: #FFFFFF;
 }
